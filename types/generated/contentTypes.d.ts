@@ -464,6 +464,34 @@ export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEnquiryEnquiry extends Struct.CollectionTypeSchema {
+  collectionName: 'enquiries';
+  info: {
+    displayName: 'enquiry';
+    pluralName: 'enquiries';
+    singularName: 'enquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::enquiry.enquiry'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -562,6 +590,35 @@ export interface ApiSoldPropertySoldProperty
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     year: Schema.Attribute.BigInteger;
+  };
+}
+
+export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'teams';
+  info: {
+    displayName: 'team';
+    pluralName: 'teams';
+    singularName: 'team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desigination: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1076,8 +1133,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::contact-form.contact-form': ApiContactFormContactForm;
+      'api::enquiry.enquiry': ApiEnquiryEnquiry;
       'api::property.property': ApiPropertyProperty;
       'api::sold-property.sold-property': ApiSoldPropertySoldProperty;
+      'api::team.team': ApiTeamTeam;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
