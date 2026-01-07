@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sold_properties",
+  "info": {
+    "singularName": "sold-property",
+    "pluralName": "sold-properties",
+    "displayName": "sold-property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "formattedPrice": {
+      "type": "string"
+    },
+    "isSold": {
+      "type": "boolean"
+    },
+    "soldDate": {
+      "type": "date"
+    },
+    "year": {
+      "type": "biginteger"
+    },
+    "state": {
+      "type": "string"
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "integer"
+    },
+    "carSpaces": {
+      "type": "integer"
+    },
+    "landSize": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "suburb": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
