@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lease_properties",
+  "info": {
+    "singularName": "lease-property",
+    "pluralName": "lease-properties",
+    "displayName": "lease-property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "longDescription": {
+      "type": "text"
+    },
+    "rentPrice": {
+      "type": "string"
+    },
+    "rentLabel": {
+      "type": "string"
+    },
+    "availableNow": {
+      "type": "boolean"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "available",
+        "leased"
+      ]
+    },
+    "streetAddress": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "bedrooms": {
+      "type": "string"
+    },
+    "bathrooms": {
+      "type": "string"
+    },
+    "carSpaces": {
+      "type": "string"
+    }
+  }
+}

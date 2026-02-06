@@ -492,6 +492,48 @@ export interface ApiEnquiryEnquiry extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLeasePropertyLeaseProperty
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'lease_properties';
+  info: {
+    displayName: 'lease-property';
+    pluralName: 'lease-properties';
+    singularName: 'lease-property';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    availability: Schema.Attribute.Enumeration<['available', 'leased']>;
+    availableNow: Schema.Attribute.Boolean;
+    bathrooms: Schema.Attribute.String;
+    bedrooms: Schema.Attribute.String;
+    carSpaces: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lease-property.lease-property'
+    > &
+      Schema.Attribute.Private;
+    longDescription: Schema.Attribute.Text;
+    postcode: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    rentLabel: Schema.Attribute.String;
+    rentPrice: Schema.Attribute.String;
+    shortDescription: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'>;
+    state: Schema.Attribute.String;
+    streetAddress: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -1134,6 +1176,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::enquiry.enquiry': ApiEnquiryEnquiry;
+      'api::lease-property.lease-property': ApiLeasePropertyLeaseProperty;
       'api::property.property': ApiPropertyProperty;
       'api::sold-property.sold-property': ApiSoldPropertySoldProperty;
       'api::team.team': ApiTeamTeam;
